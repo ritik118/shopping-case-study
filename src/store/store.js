@@ -7,17 +7,17 @@ import thunk from "redux-thunk";
 
 const middleWares = [process.env.NODE_ENV !== 'production' && logger].filter(Boolean);
 
-const persistConfig = {
-    key: "root",
-    storage,
-    whitelist: ['cart'],
-};
+// const persistConfig = {
+//     key: "root",
+//     storage,
+//     whitelist: ['cart'],
+// };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const composedEnhancer = (process.env.NODE_ENV !== 'production' && window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose ;
 const composedEnhancers = composedEnhancer(applyMiddleware(...middleWares));
 
 export const store = createStore(rootReducer, undefined, composedEnhancers);
 
-export const persistor = persistStore(store);
+//export const persistor = persistStore(store);
