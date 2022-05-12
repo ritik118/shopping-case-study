@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategoryData } from "../store/categories/category.action";
+import { setCategoryData, setSelectedCategory } from "../store/categories/category.action";
 import { selectCategoryData } from "../store/categories/category.selector";
 import { fetchCategoryData } from "../utils/server/server.util";
 import './ProductCategory.scss';
 
-const ProductCategory = () => {
+const ProductCategory = ({category}) => {
+  const [selectTag,setSelectTag] = useState(category);
 
     const dispatch = useDispatch();
 
@@ -17,17 +18,36 @@ const ProductCategory = () => {
                dispatch(setCategoryData(categoryData));
           }
       }
+      if(selectTag !== "All"){
+        dispatch(setSelectedCategory(selectTag));
+      }
   
       getCategoryData();
     }, []);
 
     const categoryItems = useSelector(selectCategoryData);
 
+    const selectChangeHandler = (e) => {
+      setSelectTag(e.target.value);
+      dispatch(setSelectedCategory(e.target.value));
+    }
+
+    const categoryChangeHandler = (categoryId) => {
+      if(categoryId == selectTag){
+        setSelectTag("All");
+       dispatch(setSelectedCategory("All"));
+      }
+      else{
+        setSelectTag(categoryId);
+       dispatch(setSelectedCategory(categoryId));
+      }
+    }
+
   return (
       <>
       <section className="d-md-none productCategoryMobile">
-        <select name="categ" id="categ" className="dropdown">
-          <option id="1" value="All" defaultChecked>
+        <select name="categ" id="categ" value={selectTag} onChange={selectChangeHandler}  className="dropdown">
+          <option id="1" value="All">
             All Products
           </option>
           {categoryItems.map((categoryItem) => (
@@ -39,10 +59,10 @@ const ProductCategory = () => {
       </section>
       <section className="d-none d-sm-none d-md-block productCategory">
         {categoryItems.map((categoryItem) => (
-          <div key={categoryItem.id}>
+          <div key={categoryItem.id} className="productCategoryItemDiv" onClick={() => categoryChangeHandler(categoryItem.id)} style={{backgroundColor: selectTag == categoryItem.id ? "#d4d4d4" : "rgb(230, 223, 223)"}}>
             <p>{categoryItem.name}</p>
-            <hr />
           </div>
+
         ))}
       </section>
       </>

@@ -7,21 +7,25 @@
 .productCategory {
 
     @media screen and (min-width:768px){
-        background-color: rgb(190, 185, 185);
+        background-color: rgb(230, 223, 223);
         text-align: center;
         color: black;
-        padding: 10px 20px;
-        display: flex;
-        //flex-direction: column;
-        //justify-content: stretch;
-        width: 2500px;
-        overflow: hidden;
+        padding-top: 10px;
     }
-
+    p {
+        white-space: nowrap;
+    }
     p:hover {
         cursor: pointer;
     }
 
+}
+
+.productCategoryItemDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
 }
 
 .dropdown {
@@ -29,8 +33,4 @@
      background-color: rgb(234, 70, 124);
       padding: 10px 20px;
        color: white;
-}
-
-.productCategory div:last-child hr {
-    display: none;
 }

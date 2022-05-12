@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 import './CategoryItem.scss';
 
@@ -13,7 +14,9 @@ return (
             <p className='categoryCardName'>{item.name}</p>
             <p className='categoryCardDescription'>{item.description}</p>
             <Button>
+            <Link to={`/products/${item.id}`} style={{textDecoration:'none', color:'white'}}>
             {'Explore ' + item.key}
+            </Link>
             </Button>
         </div>
     </div>

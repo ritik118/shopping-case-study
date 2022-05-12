@@ -21,7 +21,7 @@ const Header = () => {
             <nav>
                 <ul>
                 <Link to="/" style={{textDecoration: 'none', marginRight:'10px'}}>Home  </Link>
-                <Link to="/products" style={{textDecoration: 'none'}}>Products</Link>
+                <Link to="/products/All" style={{textDecoration: 'none'}}>Products</Link>
                 </ul>
             </nav>
             <div className='cart'>
