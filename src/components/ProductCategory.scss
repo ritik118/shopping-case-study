@@ -1,0 +1,36 @@
+
+.productCategoryMobile {
+    background-color: rgb(234, 70, 124);
+    color: white;
+}
+
+.productCategory {
+
+    @media screen and (min-width:768px){
+        background-color: rgb(190, 185, 185);
+        text-align: center;
+        color: black;
+        padding: 10px 20px;
+        display: flex;
+        //flex-direction: column;
+        //justify-content: stretch;
+        width: 2500px;
+        overflow: hidden;
+    }
+
+    p:hover {
+        cursor: pointer;
+    }
+
+}
+
+.dropdown {
+    width:100%;
+     background-color: rgb(234, 70, 124);
+      padding: 10px 20px;
+       color: white;
+}
+
+.productCategory div:last-child hr {
+    display: none;
+}

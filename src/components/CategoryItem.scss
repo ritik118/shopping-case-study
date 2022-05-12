@@ -9,6 +9,10 @@
     margin-bottom: 20px;
 }
 
+.categoryCard:nth-child(2n) {
+    flex-direction: row-reverse;
+}
+
 .categoryCardImage {
     width: 150px;
     height: 100px;

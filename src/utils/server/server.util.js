@@ -7,3 +7,8 @@ export const fetchCategoryData = async () => {
     const categoryData = await fetch(process.env.REACT_APP_API_URL + '/categories').then((res) => res.json()).then((result) => result)
     return categoryData;
 }
+
+export const fetchProductData = async () => {
+    const productData = await fetch(process.env.REACT_APP_API_URL + '/products').then((res) => res.json())
+    return productData;
+}
