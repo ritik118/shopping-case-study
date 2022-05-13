@@ -3,8 +3,20 @@ import "./Header.scss";
 import logo from '../assets/images/logo.png';
 import cartIcon from '../assets/images/cart.svg';
 import { Link, Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCartCount, selectCartIsOpen } from '../store/cart/cart.selector';
+import Cart from './Cart';
+import { setCartToggle } from '../store/cart/cart.action';
 
 const Header = () => {
+
+    const cartIsOpen = useSelector(selectCartIsOpen);
+    const cartCount = useSelector(selectCartCount);
+    const dispatch = useDispatch();
+    const cartToggleHandler = () => {
+        dispatch(setCartToggle());
+    }
+
 
     return (
         <header className='header'>
@@ -24,11 +36,12 @@ const Header = () => {
                 <Link to="/products/All" style={{textDecoration: 'none'}}>Products</Link>
                 </ul>
             </nav>
-            <div className='cart'>
+            <div className='cart' onClick={cartToggleHandler}>
                 <img src={cartIcon} />
-                <span>   0 Items</span>
+                <span style={{color:'rgb(234, 70, 124)', fontWeight:'bold'}}>   {cartCount} Items</span>
             </div>
         </section>
+        {cartIsOpen && <Cart />}
         <Outlet />
         </header>
     )

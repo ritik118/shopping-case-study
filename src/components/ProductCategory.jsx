@@ -18,9 +18,8 @@ const ProductCategory = ({category}) => {
                dispatch(setCategoryData(categoryData));
           }
       }
-      if(selectTag !== "All"){
         dispatch(setSelectedCategory(selectTag));
-      }
+      
   
       getCategoryData();
     }, []);
@@ -62,7 +61,6 @@ const ProductCategory = ({category}) => {
           <div key={categoryItem.id} className="productCategoryItemDiv" onClick={() => categoryChangeHandler(categoryItem.id)} style={{backgroundColor: selectTag == categoryItem.id ? "#d4d4d4" : "rgb(230, 223, 223)"}}>
             <p>{categoryItem.name}</p>
           </div>
-
         ))}
       </section>
       </>
